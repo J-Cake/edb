@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": false,
+        "rootDirs": ["src", "test"],
+        "outDir": "build/ts",
+        "declaration": true,
+        "declarationDir": "build/def",
+        "forceConsistentCasingInFileNames": true,
+        "importHelpers": true,
+        "strict": true,
+        "baseUrl": "./src",
+        "paths": {
+            "#db": ["db/index.ts"],
+            "#rel": ["relational/index.ts"],
+            "#repl": ["repl/index.ts"],
+        }
+    },
+    "exclude": ["build", "node_modules", "test"]
+}

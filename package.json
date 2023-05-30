@@ -1,0 +1,40 @@
+{
+    "name": "edb",
+    "description": "",
+    "type": "module",
+    "scripts": {
+        "build": "mkjson build/\\*",
+        "test": "node test.js",
+        "repl": "node build/repl.js"
+    },
+    "bin": {
+        "repl": "build/repl.js"
+    },
+    "dependencies": {
+        "@j-cake/jcake-utils": "latest",
+        "lodash": "latest",
+        "chalk": "latest"
+    },
+    "devDependencies": {
+        "@types/node": "latest",
+        "@types/lodash": "latest",
+        "esbuild": "latest",
+        "typescript": "latest",
+        "@j-cake/mkjson": "latest"
+    },
+    "imports": {
+        "#db": "./build/db.js",
+        "#rel": "./build/relational.js",
+        "#repl": "./build/repl.js"
+    },
+    "deploy": {
+        "scripts": null,
+        "devDependencies": null,
+        "dependencies": null,
+        "imports": {
+            "#db": "./db.js",
+            "#rel": "./relational.js",
+            "#repl": "./repl.js"
+        }
+    }
+}

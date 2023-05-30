@@ -1,0 +1,23 @@
+{
+    env: {
+        esbuild_options: "echo --bundle --sourcemap --platform=node --format=esm --external:@j-cake/jcake-utils --external:#db --external:#rel --external:#repl"
+    },
+    targets: {
+        'build/db.js': {
+            dependencies: ['src/db/*.ts'],
+            run: "esbuild src/db/index.ts --outfile=build/db.js $esbuild_options"
+        },
+        'build/relational.js': {
+            dependencies: ['build/db.js', 'src/relational/*.ts'],
+            run: "esbuild src/relational/index.ts --outfile=build/relational.js $esbuild_options"
+        },
+        'build/repl.js': {
+            dependencies: ['build/db.js', 'src/repl/*.ts'],
+            run: "esbuild src/repl/index.ts --outfile=build/repl.js $esbuild_options"
+        },
+        'build/package.json': {
+            dependencies: ['package.json'],
+            run: "cat package.json | jq -r '. * .deploy * {deploy:null} | with_entries(select(.value |. != null))' > build/package.json"
+        }
+    }
+}
